@@ -11,7 +11,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -21,7 +25,7 @@ body {
 }
 
 a {
-  color: white;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -31,17 +35,15 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background: black;
   border-bottom: 1px solid #222;
 }
 
 .logo {
   font-size: 26px;
+  letter-spacing: 3px;
   font-weight: bold;
-  letter-spacing: 2px;
 }
 
-/* Hamburger */
 .menu-btn {
   font-size: 28px;
   cursor: pointer;
@@ -51,8 +53,8 @@ header {
 .drawer {
   position: fixed;
   top: 0;
-  right: -300px;
-  width: 300px;
+  right: -280px;
+  width: 280px;
   height: 100%;
   background: #fff;
   color: #000;
@@ -63,13 +65,8 @@ header {
 
 .drawer a {
   display: block;
-  color: black;
   font-size: 20px;
   margin-bottom: 20px;
-}
-
-.drawer a:hover {
-  text-decoration: underline;
 }
 
 .drawer.open {
@@ -78,10 +75,7 @@ header {
 
 .overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.6);
   display: none;
   z-index: 900;
@@ -94,8 +88,6 @@ header {
 /* ---------- HERO ---------- */
 .hero {
   height: 90vh;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,21 +97,20 @@ header {
 
 .hero h1 {
   font-size: 60px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 .hero p {
   margin-top: 15px;
-  font-size: 18px;
-  color: #ccc;
+  color: #aaa;
 }
 
 .hero button {
   margin-top: 30px;
-  padding: 14px 30px;
+  padding: 14px 32px;
   border: none;
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
   font-size: 16px;
   cursor: pointer;
 }
@@ -128,7 +119,7 @@ header {
   background: #ddd;
 }
 
-/* ---------- SECTION ---------- */
+/* ---------- SECTIONS ---------- */
 section {
   padding: 80px 40px;
   text-align: center;
@@ -143,58 +134,59 @@ section h2 {
 /* ---------- MODELS ---------- */
 .models {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
 }
 
 .card {
-  background: #111;
   border: 1px solid #222;
-  border-radius: 10px;
-  overflow: hidden;
+  padding: 30px;
+  transition: 0.3s;
 }
 
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.card:hover {
+  background: #111;
 }
 
 .card h3 {
-  margin: 15px 0 5px;
+  margin-bottom: 10px;
 }
 
 .card p {
   color: #aaa;
-  padding-bottom: 20px;
 }
 
 /* ---------- GALLERY ---------- */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-.gallery img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
+.gallery div {
+  height: 160px;
+  border: 1px solid #222;
 }
 
 /* ---------- CONTACT ---------- */
 .contact p {
   margin: 10px 0;
-  color: #ccc;
+  color: #aaa;
 }
 
 /* ---------- FOOTER ---------- */
 footer {
-  background: #000;
+  border-top: 1px solid #222;
   padding: 20px;
   text-align: center;
-  border-top: 1px solid #222;
+  color: #777;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 42px;
+  }
 }
 </style>
 </head>
@@ -218,8 +210,10 @@ footer {
 <!-- HERO -->
 <section class="hero" id="home">
   <h1>LEECOP</h1>
-  <p>Precision • Power • Prestige</p>
-  <button onclick="document.getElementById('models').scrollIntoView()">Explore Models</button>
+  <p>Precision • Performance • Prestige</p>
+  <button onclick="document.getElementById('models').scrollIntoView()">
+    Explore Models
+  </button>
 </section>
 
 <!-- MODELS -->
@@ -227,19 +221,16 @@ footer {
   <h2>Our Models</h2>
   <div class="models">
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
       <h3>Leecop One</h3>
-      <p>Electric • 520km Range</p>
+      <p>Electric • 500km Range</p>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
       <h3>Leecop GT</h3>
-      <p>0–100 in 3.5s</p>
+      <p>Sport • 0–100 in 3.6s</p>
     </div>
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def">
       <h3>Leecop SUV</h3>
-      <p>Luxury • AWD</p>
+      <p>Luxury • All Wheel Drive</p>
     </div>
   </div>
 </section>
@@ -248,17 +239,17 @@ footer {
 <section id="gallery">
   <h2>Gallery</h2>
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763">
-    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
-    <img src="https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
   <h2>Contact</h2>
-  <p>Email: Liyan@leecopmotors.com</p>
-  <p>Phone: +91 8450977600</p>
+  <p>Email: <a href="mailto:contact@leecop.com">contact@leecop.com</a></p>
+  <p>Phone: <a href="tel:+919000012345">+91 90000 12345</a></p>
 </section>
 
 <footer>
