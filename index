@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEECOP Motors</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: black;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Hamburger */
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ---------- SIDE DRAWER ---------- */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  padding: 40px 30px;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+.drawer a {
+  display: block;
+  color: black;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.drawer a:hover {
+  text-decoration: underline;
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  z-index: 900;
+}
+
+.overlay.show {
+  display: block;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+  url("https://images.unsplash.com/photo-1503376780353-7e6692767b70") center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ccc;
+}
+
+.hero button {
+  margin-top: 30px;
+  padding: 14px 30px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hero button:hover {
+  background: #ddd;
+}
+
+/* ---------- SECTION ---------- */
+section {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+/* ---------- MODELS ---------- */
+.models {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px 0 5px;
+}
+
+.card p {
+  color: #aaa;
+  padding-bottom: 20px;
+}
+
+/* ---------- GALLERY ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ---------- CONTACT ---------- */
+.contact p {
+  margin: 10px 0;
+  color: #ccc;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #222;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LEECOP</div>
+  <div class="menu-btn" onclick="openDrawer()">☰</div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#home" onclick="closeDrawer()">Home</a>
+  <a href="#models" onclick="closeDrawer()">Models</a>
+  <a href="#gallery" onclick="closeDrawer()">Gallery</a>
+  <a href="#contact" onclick="closeDrawer()">Contact</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <h1>LEECOP</h1>
+  <p>Precision • Power • Prestige</p>
+  <button onclick="document.getElementById('models').scrollIntoView()">Explore Models</button>
+</section>
+
+<!-- MODELS -->
+<section id="models">
+  <h2>Our Models</h2>
+  <div class="models">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+      <h3>Leecop One</h3>
+      <p>Electric • 520km Range</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c">
+      <h3>Leecop GT</h3>
+      <p>0–100 in 3.5s</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def">
+      <h3>Leecop SUV</h3>
+      <p>Luxury • AWD</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763">
+    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+    <img src="https://images.unsplash.com/photo-1519648023493-d82b5f8d7b8a">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Email: contact@leecopmotors.com</p>
+  <p>Phone: +91 90000 12345</p>
+</section>
+
+<footer>
+  <p>© 2026 LEECOP Motors</p>
+</footer>
+
+<script>
+function openDrawer() {
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeDrawer() {
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("overlay").classList.remove("show");
+}
+</script>
+
+</body>
+</html>
